@@ -1,0 +1,121 @@
+﻿.chat-container{
+	display: flex;	/*flex box*/
+	height: calc(100vh - 210px);
+}
+
+.user-list-container,
+.chat-box-container{
+	flex: 0 0 auto;
+	border: 1px solid #c0c0c0;
+}
+
+.user-list-container{
+	width: 30%;
+	margin-right: 10px;
+}
+
+.chat-box-container{
+	width: 70%;
+	overflow: hidden;
+}
+
+.user-list-container > .user-item{
+	padding: 12px;
+	border-bottom: 1px dotted #c0c0c0;
+}
+/*CSS khi rê chuột vào class user-item*/
+.user-list-container > .user-item:hover{
+	background-color: #f9f9f9;
+	cursor: pointer;
+}
+
+/*CSS cho chấm tròn thể hiện trạng thái*/
+
+/* Mặc định là offline */
+.user-fullname::before {
+	content: ''; /*Bắt buộc phải có khu dùng ::before */
+	width: 14px;
+	height: 14px;
+	background-color: #b7b7b7;
+	display: inline-block;
+	margin-right: 5px;
+	border-radius: 50%;
+	border: 1.2px solid white;
+}
+
+/* Trạng thái online */
+.user-fullname.online::before {
+	background-color: green;
+}
+
+/* CSS cho chat box */
+.msg-box{
+	display: flex;
+	margin: 5px;
+}
+.msg-box > .msg-content {
+	background-color: #f2f5f7;
+	padding: 8px;
+	border-radius: 8px;
+	max-width: 70%;
+	border: 1px solid #c7c7c7;
+	word-break: break-word;
+}
+.msg-box > .msg-time{
+	display: flex;
+	align-items: center;
+	margin-left: 5px;
+	font-size: 12px;
+	color: #696969;
+	opacity: 0;		/*Độ trong suốt (0.0 -> 1.0)*/
+	transition: opacity 0.3s;
+}
+
+/* Hiện thời gian khi rê chuột vào thẻ cha msg-box*/
+.msg-box:hover > .msg-time{
+	opacity: 1;
+}
+
+/* Chỉnh sửa cho tin nhắn của bản thân */
+.msg-box.me{
+	flex-direction: row-reverse;
+}
+
+.msg-box.me > .msg-content {
+	background-color: #b026f4;
+	border: 1px solid #8913c3;
+	color: white;
+}
+.msg-box.me > .msg-time{
+	margin-right: 5px;
+}
+
+.input-msg-container{
+	padding: 5px;
+	background-color: rgb(176 38 244 / 0.10);
+}
+
+#input-msg {
+	outline: none;
+	resize: none;
+	width: 100%;
+	border: 1.2px solid #e0adf8;
+	border-radius: 5px;
+	box-sizing: border-box;
+}
+	#input-msg:focus {
+		border: 1.5px solid #a90ff4;
+	}
+
+.msg-box-container{
+	height: calc(100% - 63px);
+	overflow: auto;
+}
+
+.selected{
+	background-color: #b026f4;
+	color: white;
+}
+.user-item.selected:hover {
+	background-color: #b026f4;
+}

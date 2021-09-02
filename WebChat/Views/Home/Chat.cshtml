@@ -1,0 +1,46 @@
+﻿@model IEnumerable<AppUser>
+@{
+	ViewData["Title"] = "Home Page";
+}
+
+@section Header{
+	<link href="~/css/chat.css" rel="stylesheet" />
+}
+<h1>Chat with me!</h1>
+<div class="chat-container">
+	<div class="user-list-container">
+		@foreach (var user in Model)
+		{
+			<div class="user-item" data-user-id="@user.Id">
+				<span class="user-fullname">@user.FullName <small>(@user.Username)</small></span>
+			</div>
+		}
+	</div>
+
+	<div class="chat-box-container">
+		<div class="msg-box-container">
+			@*<div class="msg-box">
+				<div class="msg-content">NộidungtinnhắnNộidungtinnhắnNộidungtinnhắnNộidungtinnhắnNộidungtinnhắnNộidungtinnhắn</div>
+				<div class="msg-time">25/08/21 11:21</div>
+			</div>
+
+			<div class="msg-box me">
+				<div class="msg-content">Nội dung tin nhắn Nội dung tin nhắn Nội dung tin nhắn Nội dung tin nhắn Nội dung tin nhắn Nội dung tin nhắn</div>
+				<div class="msg-time">25/08/21 11:21</div>
+			</div>*@
+
+		</div>
+
+		<div class="input-msg-container">
+			<textarea id="input-msg" placeholder="Aa.." rows="2"></textarea>
+		</div>
+	</div>
+
+</div>
+
+<input type="hidden" id="currentUserId" value="@User.FindFirstValue(ClaimTypes.NameIdentifier)" />
+
+@section Scripts{
+	<script src="~/lib/microsoft/signalr/dist/browser/signalr.js"></script>
+	<script src="~/js/chat.js" asp-append-version="true"></script>
+}
